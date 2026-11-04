@@ -21,6 +21,12 @@ classification:
   arxiv: ["math.CO"]
   msc2020: ["05C15"]
 
+repository:
+  role: "thin-wrapper"
+  substantive_formalization:
+    id: "https://github.com/jtraverso/plantholt-overfull-criterion"
+    revision: "28ff33dd73fc858056ff0db75d5a6d6cef15c8b5"
+
 sources:
   - title: "Vertex-distinguishing proper edge colourings of some regular graphs"
     authors:
