@@ -1,0 +1,14 @@
+{
+  "challenge_module": "EquitableStrongChallenge",
+  "solution_module": "EquitableStrongSolution",
+  "theorem_names": [
+    "Balanced.exists_equitable_strong"
+  ],
+  "definition_names": [],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}

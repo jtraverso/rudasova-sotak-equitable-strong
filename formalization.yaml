@@ -1,0 +1,102 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: "v0.4"
+
+project:
+  name: "Equitable strong (vertex-distinguishing) edge colourings: Rudašová–Soták, Theorem 3.1"
+  description: >-
+    A Lean 4 / Mathlib formalization of Theorem 3.1 of J. Rudašová and R. Soták,
+    Vertex-distinguishing proper edge colourings of some regular graphs (Discrete Math. 308, 2008).
+    exists_equitable_strong: if a finite simple graph G has a strong (vertex-distinguishing) proper
+    edge colouring with m colours and m ≤ k, then G has an equitable strong proper edge colouring
+    with k colours. One statement. Edge colourings are colourings of the line graph; the palette
+    of a vertex is the set of colours of its edges; strong means distinct vertices have distinct
+    palettes; equitable means the colour classes differ in size by at most one.
+  authors:
+    - "Juan Pablo Traverso Gianini"
+  license: "Apache-2.0"
+  responsible_maintainers:
+    - "Juan Pablo Traverso Gianini"
+
+classification:
+  arxiv: ["math.CO"]
+  msc2020: ["05C15"]
+
+sources:
+  - title: "Vertex-distinguishing proper edge colourings of some regular graphs"
+    authors:
+      - "Janka Rudašová"
+      - "Roman Soták"
+    id: "doi:10.1016/j.disc.2007.07.019"
+    type: "paper"
+    location: "Discrete Mathematics 308 (2008), 795–802: Theorem 3.1."
+    relationship: "formalizes"
+    note: >-
+      Theorem 3.1 is formalized for every k ≥ m where G has a strong m-colouring (the article
+      takes k ≥ s(G)). The proof follows the article (a Kempe interchange on the (a, b)-paths
+      of a component of the graph of path ends) but minimises the sum of squares of the
+      colour-class sizes instead of the sum of pairwise differences. Sections 1–2 of the article
+      (values of s(G) for regular graphs) are not formalized. The formalization is by a
+      different author; the article's authors were not involved.
+    license: "unknown"
+    author_endorsement: "not-contacted"
+
+related_formalizations:
+  - id: "PALOMAR-2026-11-04-000016 (jtraverso/plantholt-overfull-criterion @ 28ff33d)"
+    relationship: "builds-on"
+    note: >-
+      Pinned dependency: the proof is in its directory Balanced/ (not among its compared
+      statements). It depends in turn on PALOMAR-2026-11-04-000009 v2 (jtraverso/
+      overfull-critical-graphs @ b85da9a) and PALOMAR-2026-10-15-000004 (jtraverso/vizing @
+      33b2de8) for partial edge colourings and Kempe changes. The compared statement uses only
+      Mathlib.
+
+status:
+  scope: >-
+    One statement: Rudašová–Soták 2008, Theorem 3.1. Not formalized: the values of the
+    vertex-distinguishing index of regular graphs in Sections 1–2 of the article.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: []
+
+automation:
+  methods:
+    - method: "agent"
+      models: ["Claude Opus 5.5"]
+      framework: "Claude Code (Anthropic)"
+      tool_setup: >-
+        Wrote the Lean development (Balanced/ in the dependency), the Challenge/Solution pair and
+        the packaging under the author's direction. Checked with a local build, a comparison of
+        the elaborated Challenge and Solution statements and definitions (pp.all), and #print
+        axioms (Lean v4.35.0-rc3, Mathlib c55e6e786f49471c72fbddbec5415808896aec1e).
+      cost:
+        wall_time: "a few hours"
+        spend_usd: "subscription-based"
+        hardware: "local machine"
+      prompting_notes: "Natural-language instructions in Spanish, directed by the author."
+  spend_usd: "not tracked"
+  notes: >-
+    The Lean development is AI-written under the author's direction and mechanically verified: no
+    sorry, axioms limited to propext, Classical.choice and Quot.sound, identical elaborated
+    statements and definitions in the Challenge and the Solution.
+
+fidelity:
+  divergences: >-
+    Proper edge colourings are colourings of the line graph with colours Fin k; colour classes
+    are measured with Set.ncard of the colour classes of the line-graph colouring (sets of edges).
+    The hypothesis k ≥ s(G) is written as the existence of a strong m-colouring with m ≤ k.
+
+review:
+  status: "agent-reviewed"
+  reviewers:
+    - "Claude Opus 5.5 (AI agent in Claude Code, acting for the author)"
+  notes: >-
+    Agent review by Claude Opus 5.5, distinct from the mechanical verification: the agent checked
+    the statement and the definitions against the source. No independent human review of the
+    formalization has been performed.
+
+alignment:
+  statements:
+    - {source: "Rudašová–Soták 2008, Theorem 3.1", lean: "Balanced.exists_equitable_strong", module: "EquitableStrongChallenge", status: "proved"}
+
+acknowledgements: >-
+  Mathlib and the Lean community.
